@@ -1,47 +1,123 @@
 const express = require('express');
-const loggerModule = require('../logger/logger')
-const helperModule = require('../util/helper')
-const formatterModule = require('../validator/formatter')
-const lodash = require('lodash')
-
+let _ = require("lodash")
 const router = express.Router();
 
-router.get('/test-me', function (req, res) {
-    loggerModule.welcomeMessage()
-    helperModule.printTodaysDate()
-    helperModule.printCurrentMonth()
-    helperModule.printBatchInformation()
-    formatterModule.trimString()
-    formatterModule.changeCaseToUpper()
-    formatterModule.changeCaseToLower()
-    res.send('My first ever api!')
+
+
+router.get('/movies', function (req, res) {
+
+    // solution no 1
+    let moviename = ['rang de basanti', 'the shining', 'lord of the rings', 'batman begin', 'kgf chapater one'];
+
+    res.send(moviename)
+
 });
 
-router.get('/hello', function (req, res) {
-// Problem a)
-let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-let subArrays = lodash.chunk(months, 3)
-console.log('The result after splitting the months array is ', subArrays)
 
-// Problem b)
+router.get('/movies/:indexNumber', function (req, res) {
 
-let oddNumbers = [1,3,5,7,9,11,13,15,17,19]
-console.log('The last 9 odd numbers in the array are: ', lodash.tail(oddNumbers))
+    // GET /movies/1 is a valid request and it should return the movie in your array at index 1 
+    // problem 2
 
-// Problem c)
-let a = [1 , 2, 1, 4]
-let b = [2, 3, 4, 3]
-let c = [6, 1, 5, 10]
-let d = [1, 1, 1]
-let e = [1, 2, 3, 4, 5]
+    let movieName = ['rang de basanti', 'the shining', 'lord of the rings', 'batman begin', 'kgf chapater one'];
 
-console.log('Final array or unique numbers is : ', lodash.union(a, b, c, d, e))
+    //     let i = req.params.indexNumber;
+    //     let showMovieName;
+    //     for (j = 1; j <= movieName.length; j++) {
+    //         let num = movieName[i - 1];
+    //         showMovieName = num
+    //     }
+    //     res.send(showMovieName)
 
-// Problem d)
-let arrayOfKeyValuePairs = [["horror","The Shining"],["drama","Titanic"],["thriller","Shutter Island"],["fantasy","Pans Labyrinth"]]
-console.log('The object created from arrays is :', lodash.fromPairs(arrayOfKeyValuePairs))
-    res.send('My hello api!')
+    // Handle a scenario in problem 2 where if the index is greater than the valid maximum value a message is returned that tells the user to use a valid index in an error message.
+    // solution no 3
+    // Put in validation
+    let i = req.params.indexNumber;
+    let showMovieName;
+    for (j = 1; j <= movieName.length; j++) {
+        let num = movieName[i - 1];
+        if (num >= i) {
+            showMovieName = num;
+        } else {
+            showMovieName = "Please enter the valid movie number"
+        }
+    }
+    res.send(showMovieName)
 });
+
+
+router.get('/films', function (req, res) {
+
+    // solution no 4
+    let movieArrName = [
+        {
+            id: 1,
+            name: 'The Shining'
+        },
+        {
+            id: 2,
+            name: 'Incendies'
+        },
+        {
+            id: 3,
+            name: 'Rang de Basanti'
+        },
+        {
+            id: 4,
+            name: 'Finding Nemo'
+        }
+    ]
+
+    res.send(movieArrName)
+
+});
+
+router.get('/films/:filmId', function (req, res) {
+
+    // solution no 5
+    let movieArrName = [
+        {
+            id: 1,
+            name: 'The Shining'
+        },
+        {
+            id: 2,
+            name: 'Incendies'
+        },
+        {
+            id: 3,
+            name: 'Rang de Basanti'
+        },
+        {
+            id: 4,
+            name: 'Finding Nemo'
+        }
+    ]
+
+    let i = req.params.filmId;
+    let movieArrObject;
+    for (x = 1; x < movieArrName.length; x++) {
+        let indexValue = movieArrName[i - 1];
+        if (indexValue >= i) {
+            movieArrObject = indexValue;
+        } else {
+            movieArrObject = ` No movies exists with this id:- ${i}`
+        }
+    }
+    res.send(movieArrObject)
+    // res.send(movieArrObject.name)
+    // res.send(Object.entries(movieArrObject))
+
+});
+
+
+
+
+
+
+
+
+
 
 
 
