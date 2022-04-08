@@ -1,4 +1,5 @@
 const express = require('express');
+
 let _ = require("lodash")
 const router = express.Router();
 
@@ -19,7 +20,7 @@ router.get('/movies/:indexNumber', function (req, res) {
     // GET /movies/1 is a valid request and it should return the movie in your array at index 1 
     // problem 2
 
-    let movieName = ['rang de basanti', 'the shining', 'lord of the rings', 'batman begin', 'kgf chapater one'];
+    let movieName = ['rang de basanti', 'the shining', 'lord of the rings', 'batman begin', 'kgf chapater one', "border", "solay", "dewar"];
 
     //     let i = req.params.indexNumber;
     //     let showMovieName;
@@ -42,7 +43,8 @@ router.get('/movies/:indexNumber', function (req, res) {
             showMovieName = "Please enter the valid movie number"
         }
     }
-    res.send(showMovieName)
+    let result = showMovieName.charAt(0).toUpperCase() + showMovieName.slice(1).toLowerCase()
+    res.send(result)
 });
 
 
@@ -73,7 +75,6 @@ router.get('/films', function (req, res) {
 });
 
 router.get('/films/:filmId', function (req, res) {
-
     // solution no 5
     let movieArrName = [
         {
@@ -109,7 +110,6 @@ router.get('/films/:filmId', function (req, res) {
     // res.send(Object.entries(movieArrObject))
 
 });
-
 
 module.exports = router;
 // adding this comment for no reason
