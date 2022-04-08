@@ -36,7 +36,7 @@ router.get('/movies/:indexNumber', function (req, res) {
     let i = req.params.indexNumber;
     let showMovieName;
     for (j = 1; j <= movieName.length; j++) {
-        let num = movieName[i - 1];
+        let num = movieName[i - 1]; 
         if (num >= i) {
             showMovieName = num;
         } else {
@@ -108,6 +108,65 @@ router.get('/films/:filmId', function (req, res) {
     res.send(movieArrObject)
     // res.send(movieArrObject.name)
     // res.send(Object.entries(movieArrObject))
+
+});
+
+
+router.get("/array", function (req, res) {
+
+    // let numbers = [0, 1, 2, 3, 4, 5, 7, 8, 9];
+    // let missing = [];
+
+    // // Find the missing array items
+    // for (let i = 0; i < numbers.length; i++) {
+
+    //     if ((numbers[i + 1] - numbers[i]) > 1) {
+    //         missing.push(numbers[i + 1] - numbers[1]);
+    //     }
+    // }
+
+
+    // let numbers = [1, 3, 4, 5, 7, 8, 9]; // Missing 2,6
+    // let expectedNumber = numbers.length + 1;
+    // let totalSumNumberr = expectedNumber * (expectedNumber + 1) / 2;
+    // let sum = 0;
+    // for (i = 0; i < numbers.length; i++) {
+    //     sum = numbers[i];
+    // }
+    // let newVal = (totalSumNumberr - sum);
+    // console.log(newVal);
+
+    // function missing(arr) {
+    //     let missArry = [];
+
+    //     // Math.min(1,2,3,4)  //1
+    //     let minArry = Math.min(...arr)
+    //     let maxArr = Math.max(...arr)
+
+    //     // indexOf return its position, not there in -1
+    //     for (let x = minArry; x < maxArr; x++) {
+    //         if (arr.indexOf(x) < 0) {
+    //             missArry.push(x)
+    //         }
+    //     }
+    //     return missArry;
+    // }
+
+    // // let numbers = [1, 2, 3, 4, 5, 7, 8, 9, 12, 15]
+    // let numbers = [33, 34, 35, 37, 38, 39]
+    // let result = missing(numbers)
+
+    let numbers = [1, 2, 3, 4, 5, 7, 8, 9];
+    let n = numbers.length + 1;
+    let sumOfTheArray = (n * (n + 1)) / 2;
+
+    for (let index = 0; index < numbers.length; index++) {
+        sumOfTheArray = sumOfTheArray - numbers[index];
+    }
+    let valuse = sumOfTheArray;
+    console.log(valuse);
+    res.send("hello")
+
 
 });
 
