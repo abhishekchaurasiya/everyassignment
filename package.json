@@ -1,0 +1,27 @@
+{
+  "name": "nodejspublic",
+  "version": "1.0.0",
+  "description": "hello ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhishekchaurasiya/nodejspublic.git"
+  },
+  "author": "abhishek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhishekchaurasiya/nodejspublic/issues"
+  },
+  "homepage": "https://github.com/abhishekchaurasiya/nodejspublic#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.3.0"
+  }
+}
