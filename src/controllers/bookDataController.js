@@ -1,49 +1,42 @@
-const authorModel = require("../models/authorModel");
-const publisherModel = require("../models/newPublisherModel");
+// const authorModel = require("../models/authorModel");
+// const publisherModel = require("../models/newPublisherModel");
 const newBookModel = require("../models/newBookModel")
 
 
+ 
+//The authorId is present in the request body. If absent send an error message that this detail is required
+// If present, make sure the authorId is a valid ObjectId in the author collection.If not then send an error message that the author is not present.
+// The publisherId is present in the request body.If absent send an error message that this detail is required
+// If present, make sure the publisherId is a valid ObjectId in the publisher collection.If not then send an error message that the publisher is not present.
 
-const createAuthorDetails = async (req, res) => {
-    let data = req.body;
-
-    if (data.authorName) {
-        let saveData = await authorModel.create(data);
-        res.send({ message: saveData });
-    } else {
-        res.send({ message: "Author name must be present" });
-    }
-
-};
-
-const createPublisherDetails = async (req, res) => {
-    let data = req.body;
-    if (data.name) {
-        let saveData = await publisherModel.create(data);
-        res.send({ message: saveData });
-    } else {
-        res.send({ message: "Author name must be present" });
-    }
-
-};
-
+// New book add and Detail controller
 const createBookDetails = async (req, res) => {
-    let data = req.body;
-    if (data.author && data.publisher) {
-        
-            let saveData = await newBookModel.create(data);
-            res.send({ message: saveData });
 
-    } else {
-
-        res.send({ message: "this authore name not present" });
-
+    let bookData = req.body;
+    if (bookData.author && bookData.publisher) {
+        // let author = await authorModel.findById();
+        // console.log(author);
+        // if (!author) {
+        //     res.send({ Error: "Please enter the valid author id" })
+        // }
+        let saveData = await newBookModel.create(bookData)
+        res.send({ message: saveData });
     }
+
+
+
+
+
+
 
 }
 
 
+let getAllBookData = async (req, res) => {
+    let bookData = await newBookModel.find().populate("author").populate("publisher")
+    res.send({ message: bookData })
+}
 
 
 
-module.exports = { createAuthorDetails, createPublisherDetails, createBookDetails }
+module.exports = { createBookDetails, getAllBookData }
