@@ -2,19 +2,18 @@ const express = require('express');
 
 const router = express.Router();
 
-const { createAuthorDetails } = require("../controllers/authorcontroller");
-const { createPublisherDetails } = require("../controllers/publishercontroller");
-const { createBookDetails, getAllBookData, updateBooks, updateBookPrices } = require("../controllers/bookDataController")
+
+const { createBatchDetails } = require("../controllers/batchescontroller");
+const { createDevelopersDetails, getScholarShipDeveloper, getDevelopers } = require("../controllers/developercontroellers");
 
 
-router.post("/createauthor", createAuthorDetails);
-router.post("/createpublisher", createPublisherDetails);
-router.post("/newBook", createBookDetails)
-router.get("/getbookData", getAllBookData)
-router.put("/updatebook", updateBooks)
-router.put("/updateBookPrices", updateBookPrices)
+router.post("/createbatch", createBatchDetails);
 
+router.post("/createdevelopers", createDevelopersDetails);
 
+router.get("/scholarship-developers", getScholarShipDeveloper);
+
+router.get("/getdevelopers", getDevelopers);
 
 
 

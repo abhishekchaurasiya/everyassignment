@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-mongoose.connect("mongodb+srv://mongoabhishek:JGETcKMFq8k1RFrV@cluster0.nn6fz.mongodb.net/Booklist?retryWrites=true&w=majority", { useNewUrlParser: true })
+mongoose.connect("mongodb+srv://mongoabhishek:JGETcKMFq8k1RFrV@cluster0.nn6fz.mongodb.net/CollegeDetail?retryWrites=true&w=majority", { useNewUrlParser: true })
     .then(() => console.log('mongo is connected'))
     .catch(error => console.log(error))
 
