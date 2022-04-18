@@ -9,17 +9,17 @@ const newBookSchemaModel = new mongoose.Schema({
         ref: "NewAuthor"
     },
     price: Number,
-    ratings: String,
+    ratings: Number,
     publisher: {
         type: ObjectId,
         ref: "NewPublisher"
     },
     isHardCover: {
-        type: String,
+        type: Boolean,
         default: false
     }
 }, { timestamps: true });
 
-let newBookModel = mongoose.model("newBook", newBookSchemaModel);
+let newBookModel = mongoose.model("NewBook", newBookSchemaModel);
 
 module.exports = newBookModel;
