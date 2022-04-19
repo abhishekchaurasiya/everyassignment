@@ -2,19 +2,18 @@ const express = require('express');
 
 const router = express.Router();
 
+const middle = require("../middleware/middleware")
 
 const { createBatchDetails } = require("../controllers/batchescontroller");
-const { createDevelopersDetails, getScholarShipDeveloper, getDevelopers } = require("../controllers/developercontroellers");
+const res = require('express/lib/response');
 
 
-router.post("/createbatch", createBatchDetails);
+router.post("/functionUp/middle-ware", middle.middleWare, middleWare1, createBatchDetails);
 
-router.post("/createdevelopers", createDevelopersDetails);
 
-router.get("/scholarship-developers", getScholarShipDeveloper);
+//  8171841589
 
-router.get("/getdevelopers", getDevelopers);
-
+// 8280304644
 
 
 module.exports = router;

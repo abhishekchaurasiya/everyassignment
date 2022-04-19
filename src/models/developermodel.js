@@ -1,5 +1,4 @@
 let mongoose = require("mongoose");
-let ObjectId = mongoose.Schema.Types.ObjectId;
 
 
 let developersModelSchema = new mongoose.Schema({
@@ -9,11 +8,6 @@ let developersModelSchema = new mongoose.Schema({
         enum: ["male", "female", "others"]
     },
     percentage: Number,
-    batch: {
-        type: ObjectId,
-        ref: "Batche"
-    }
-
 }, { timestamps: true });
 
 module.exports = mongoose.model("Developer", developersModelSchema);
