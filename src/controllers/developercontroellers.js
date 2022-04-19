@@ -36,8 +36,8 @@ const getDevelopers = async (req, res) => {
 
     let getPercentage = await DeveloperModel.find({ percentage: { $gte: queryData.percentage }}).select({ batch: 1, _id: true });
 
-    let getProgram = await BatchCollection.find({ _id: getPercentage[0].batch, program:queryData.program})
-    res.send({ Batch: getPercentage })
+    let getProgram = await BatchCollection.find({ _id: getPercentage[0].batch, program:queryData.params.program})
+    res.send({ Batch: getProgram })
 }
 
 module.exports = { createDevelopersDetails, getScholarShipDeveloper, getDevelopers }
