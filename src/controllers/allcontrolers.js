@@ -8,7 +8,6 @@ let createUserData = async (req, res) => {
 
 
 let getUserData = async (req, res) => {
-
     let saveData = await basicCollection.find({ percentage: { $gt: 80 }, gender: ["male", "female"] }).select({ firstName: 1, percentage: 1, _id: 0 });
     res.send({ message: saveData })
 }
