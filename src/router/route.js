@@ -2,18 +2,16 @@ const express = require('express');
 
 const router = express.Router();
 
-const middle = require("../middleware/middleware")
-
-const { createBatchDetails } = require("../controllers/batchescontroller");
-const res = require('express/lib/response');
+const { createUserData, getUserData } = require("../controllers/allcontrolers")
 
 
-router.post("/functionUp/middle-ware", middle.middleWare, middleWare1, createBatchDetails);
+router.post("/createuser", createUserData);
+
+router.get("/getuser", getUserData);
 
 
-//  8171841589
 
-// 8280304644
+
 
 
 module.exports = router;
