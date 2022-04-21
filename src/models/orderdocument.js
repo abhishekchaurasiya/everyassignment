@@ -13,11 +13,8 @@ let oderDocumentSchema = new mongoose.Schema({
     },
     amount: Number,
     isFreeAppUser: Boolean,
-    date: {
-        type: Date,
-        default: Date.now
-    }
+    date: String
 }, { timestamps: true });
 
 let orderDocumentModel = mongoose.model("Oderdocument", oderDocumentSchema);
-module.exports= orderDocumentModel;
+module.exports = orderDocumentModel;
