@@ -3,11 +3,18 @@ const express = require('express');
 const router = express.Router();
 
 
-const allProduct = require("../controllers/productcontroller")
+const { createUsers, loginUser, getUsers, updateUsers, deleteUser } = require("../controllers/usercontroller");
 
 
-router.post("/createproduct", allProduct.createProduct);
+router.post("/createusers", createUsers);
 
+router.post("/login", loginUser);
+
+router.get("/getusers/:userId", getUsers);
+
+router.put("/updateuser/:userId", updateUsers);
+
+router.delete("/deleteuser/:userId", deleteUser)
 
 
 
