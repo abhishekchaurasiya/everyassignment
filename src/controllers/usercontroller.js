@@ -1,6 +1,6 @@
 let userModle = require("../models/usermodel");
 let jwt = require("jsonwebtoken");
-const { all } = require("../router/route");
+
 
 let createUsers = async (req, res) => {
     let data = req.body;
@@ -27,7 +27,7 @@ let loginUser = async (req, res) => {
 }
 
 let getUsers = async (req, res) => {
-    let token = req.headers["x-Auth-toke"];
+    let token = req.headers["x-Auth-token"];
     if (!token) token = req.headers["x-auth-token"];
 
     if (!token) return res.send({ message: "token must be present", status: true });
@@ -51,14 +51,14 @@ let getUsers = async (req, res) => {
 let updateUsers = async (req, res) => {
 
 
-    let userId = req.params.userId;
-
-    let token = req.headers["x-Auth-toke"];
+    
+    let token = req.headers["x-Auth-token"];
     if (!token) token = req.headers["x-auth-token"];
-
+    
     if (!token) return res.send({ message: "token must be present", status: true });
     console.log(token);
-
+    
+    let userId = req.params.userId;
     let user = await userModle.findById(userId);
     if (!user) {
         return res.send("No such user exists");
