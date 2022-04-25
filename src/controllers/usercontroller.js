@@ -145,12 +145,9 @@ let myPostMessage = async (req, res) => {
 
         if (!decodedToken) return res.status(400).send({ status: false, msg: "token is not valid" })
 
-        //userId for which the request is made. In this case message to be posted.
         let userToBeModified = req.params.userId;
-        //userId for the logged-in user
         let userLoggedIn = decodedToken.userId;
 
-        //userId comparision to check if the logged-in user is requesting for their own data
         if (userToBeModified != userLoggedIn) {
             return res.status(400).send({ status: false, msg: 'User logged is not allowed to modify the requested users data' })
         }
@@ -159,15 +156,14 @@ let myPostMessage = async (req, res) => {
         if (!user) return res.status(400).send({ status: false, msg: 'No such user exists' })
 
         let updatedPosts = user.posts;
-        //add the message to user's posts
         updatedPosts.push(message)
         let updatedUser = await userModle.findOneAndUpdate({ _id: user._id }, { posts: updatedPosts }, { new: true })
 
-        //return the updated user document
         return res.status(201).send({ status: true, data: updatedUser })
 
     } catch (error) {
         res.status(500).send({ msg: "Error", error: error.message });
+
     }
 
 }
