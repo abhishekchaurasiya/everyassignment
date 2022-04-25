@@ -18,7 +18,7 @@ let userSchema = new mongoose.Schema({
         default: false
     },
     age: Number,
-    post: {
+    posts: {
         type: [],
         default: []
     }
