@@ -116,7 +116,7 @@ let getCurrentTime = async (req, res) => {
 
         res.status(200).send({ message: data, status: true })
     } catch (err) {
-        res.status(500).send({ message: err.message })
+        res.status(500).send({ message: err.message });
     }
 }
 
@@ -134,7 +134,8 @@ let sortedCities = async (req, res) => {
 
             let result = await axios(options);
             object.temp = result.data.main.temp;
-            console.log(result.data.main.temp);
+
+            // console.log(result.data.main.temp);
             cityInArray.push(object);
         }
 
@@ -171,7 +172,6 @@ let getAllMems = async function (req, res) {
 
 // 2. Pick a memeId you want (Eg 129242436) for the POST request
 
-
 let pickMemId = async function (req, res) {
     try {
         let memeId = req.body.memes
@@ -196,15 +196,17 @@ let createMemes = async function (req, res) {
     try {
 
         let template = req.query.template_id;
-        let text = req.query.text0;
+        let text0 = req.query.text0;
         let text1 = req.query.text1;
         let username = req.query.username;
         let password = req.query.password
         let options = {
             method: 'post',
-            url: `https://api.imgflip.com/caption_image?template_id=${template}&text0=${text}&text1=${text1}&username=${username}&password=${password}`,
-            data: "memeId"
+            url: `https://api.imgflip.com/caption_image?template_id=${template}&text0=${text0}&text1=${text1}&username=${username}&password=${password}`,
+            data:template
         };
+
+
 
         let result = await axios(options);
         let data = result.data;

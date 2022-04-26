@@ -4,7 +4,7 @@ const router = express.Router();
 const { getStates, vaccinationStateid, vaccinationDistrictBy, vaccineGetByPin, calenderByDistrict, getCurrentTime, sortedCities, getAllMems, pickMemId, createMemes } = require("../controllers/vaccinationcontroller")
 
 
-
+// Cowin api
 router.get("/cowin/states", getStates);
 
 router.get("/cowin/districtsInState/:stateId", vaccinationStateid);
@@ -23,6 +23,7 @@ router.get("/cityData", sortedCities)
 // All memes
 router.get("/getallmems", getAllMems);
 router.post("/pickmemid", pickMemId);
+
 router.post("/creatememes", createMemes)
 
 
